@@ -22,7 +22,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
         super.onCreate(savedInstanceState);
+        queryPosts();
 
+    }
+
+    private void queryPosts() {
     }
 
     private void onLogout() {
@@ -48,4 +52,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+   
 }
