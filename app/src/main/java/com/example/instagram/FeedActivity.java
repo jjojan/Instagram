@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -19,6 +20,7 @@ public class FeedActivity extends AppCompatActivity {
     protected PostsAdapter adapter;
     protected List<Post> allPosts;
     public static final String TAG = "FEEDAct";
+    private SwipeRefreshLayout swipeContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,27 @@ public class FeedActivity extends AppCompatActivity {
         rvPosts.setLayoutManager(new LinearLayoutManager(this));
 
         queryPosts();
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                fetchTimelineAsync(0);
+            }
+        });
+
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+    }
+
+    private void fetchTimelineAsync(int page) {
+        queryPosts();
+        adapter.clear();
+        swipeContainer.setRefreshing(false);
+
     }
 
     private void queryPosts() {

@@ -19,6 +19,7 @@
         android:fontFamily="cursive"
         android:gravity="center"
         android:text="Instagram"
+        android:textColor="#1C1B1B"
         android:textFontWeight="50"
         android:textSize="34sp" />
 
