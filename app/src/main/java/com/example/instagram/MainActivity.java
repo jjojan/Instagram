@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -21,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnSubmit;
     private File photoFile;
     private Button btnFeed;
+    private BottomNavigationView bottomNavigationView;
     public String photoFileName = "photo.jpg";
 
     @Override
@@ -55,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         btnSubmit = findViewById(R.id.btnSubmit);
         etDescription = findViewById(R.id.etDescription);
         btnFeed = findViewById(R.id.btnFeed);
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         //setContentView(R.layout.activity_main);
         //queryPosts();
@@ -89,14 +93,37 @@ public class MainActivity extends AppCompatActivity {
 
         btnFeed.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View v) {
+                Log.d(TAG,"error with clicker" );
                 goFeedActivity();
+            }
+        });
+
+        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment fragment;
+                switch (item.getItemId()) {
+                    case R.id.mHome:
+                        Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.mCompose:
+                        Toast.makeText(MainActivity.this, "Compose", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.mProfile:
+                    default:
+                        Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+                return true;
             }
         });
 
     }
 
     private void goFeedActivity() {
+        Log.d(TAG,"error with goFeed" );
         Intent i = new Intent(this, FeedActivity.class);
         startActivity(i);
     }

@@ -1,7 +1,11 @@
 package com.example.instagram;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,11 +25,13 @@ public class FeedActivity extends AppCompatActivity {
     protected List<Post> allPosts;
     public static final String TAG = "FEEDAct";
     private SwipeRefreshLayout swipeContainer;
+    private ImageView ivImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
+
 
         rvPosts = findViewById(R.id.rvPosts);
 
@@ -52,7 +58,9 @@ public class FeedActivity extends AppCompatActivity {
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
+
     }
+
 
     private void fetchTimelineAsync(int page) {
         queryPosts();
