@@ -10,18 +10,12 @@
     android:orientation="vertical"
     tools:context="LoginActivity">
 
-    <TextView
-        android:id="@+id/tvTtile"
+    <ImageView
+        android:id="@+id/imageView3"
         android:layout_width="match_parent"
         android:layout_height="107dp"
         android:layout_weight="1"
-        android:autoSizeTextType="uniform"
-        android:fontFamily="cursive"
-        android:gravity="center"
-        android:text="Instagram"
-        android:textColor="#1C1B1B"
-        android:textFontWeight="50"
-        android:textSize="34sp" />
+        app:srcCompat="@drawable/nav_logo_whiteout" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -36,6 +30,8 @@
         android:layout_height="match_parent"
         android:layout_marginTop="70dp"
         android:layout_weight="1"
+        android:backgroundTint="#57232121"
+        android:backgroundTintMode="add"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
