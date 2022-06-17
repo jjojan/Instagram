@@ -52,9 +52,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-
-https://user-images.githubusercontent.com/68476473/174358451-586f48d9-bbd8-4916-86de-7d7fc2fd3ec0.mp4
-
+https://user-images.githubusercontent.com/68476473/174408324-5ba2abcc-8483-45d2-863d-c37a01792f5e.mp4
 
 GIF created with [Kap](https://getkap.co/).
 
